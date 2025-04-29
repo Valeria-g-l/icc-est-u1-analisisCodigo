@@ -3,7 +3,8 @@ import java.util.Arrays;
 public class MetodosOrdenamiento {
 
     // Método de burbuja tradicional con errores
-    // Error encontrado:
+    // Error encontrado: El metodo retorna un arreglo de enteros vacio linea 21
+    //Solucion: Cambiar el return para que regrese la variable "arreglo"
     public int[] burbujaTradicional(int[] arregloOriginal) {
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
 
@@ -18,11 +19,12 @@ public class MetodosOrdenamiento {
                 }
             }
         }
-        return new int[] {};
+        return arreglo; //Error corregido
     }
 
     // Método de burbuja tradicional con errores
-    // Error encontrado:
+    // Error encontrado: En el if hace que el arreglo se imprima descendente linea 34
+    //Solucion: Cambie el signo de menor que a mayor que
 
     public int[] burbujaTradicionalSegundo(int[] arregloOriginal) {
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -30,7 +32,7 @@ public class MetodosOrdenamiento {
         int n = arreglo.length;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (arreglo[i] < arreglo[j]) {
+                if (arreglo[i] > arreglo[j]) {// Arreglo ordenado
                     // Intercambio de elementos
                     // Estas 3 lineas NO DEBEN ser modificadas
                     int temp = arreglo[i];
@@ -45,28 +47,34 @@ public class MetodosOrdenamiento {
     }
 
     // Método de burbuja tradicional con errores
-    // Error encontrado:
+    // Error encontrado: No imprime en consola y al solucionar ese error imprime en desorden
+    //Solucion: En el primer for se quito el -1
+        // En el segundo for en vez de j=0 se puso i+1
+        //En el if en el primer arreglo J se puso i, ademas se dejo de sumar en el segundo arreglo j+1
+        //De la linea 64-66 Se colocaron bien i y j
     public int[] burbujaTradicionalTercero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
 
         int n = arreglo.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n; j++) {
-                if (arreglo[j] > arreglo[j + 1]) {
+        for (int i = 0; i < n ; i++) {// error corregido
+            for (int j = i+1; j < n; j++) {// error corregido
+                if (arreglo[i] > arreglo[j]) {// error corregido
                     // Intercambio de elementos
-                    int temp = arreglo[j];
-                    arreglo[j] = arreglo[j + 1];
-                    arreglo[j + 1] = temp;
+                    int temp = arreglo[i];// error corregido
+                    arreglo[i] = arreglo[j];// error corregido
+                    arreglo[j] = temp;// error corregido
                 }
             }
         }
         return arreglo;
     }
+    
 
     // Método de selección con errores
-    // Error encontrado:
-    public int[] seleccionPrimero(int[] arregloOriginal) {
+    // Error encontrado: No retorna ningun arreglo
+    //Se retorno el arreglo con "return arreglo"
+    public int[] SeleccionPrimero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
 
@@ -81,19 +89,20 @@ public class MetodosOrdenamiento {
             arreglo[indiceMinimo] = arreglo[i];
             arreglo[i] = smallerNumber;
         }
-
+        return arreglo; //Error corregido
     }
 
     // Método de selección con errores
-    // Error encontrado:
+    // Error encontrado: No imprime el arreglo
+    //En el primer for se agrego -1     En el segundo for cambie para que el for J sume
     public int[] seleccionSegundo(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
 
-        for (int i = 0; i < arreglo.length; i++) {
+        for (int i = 0; i < arreglo.length-1; i++) {// Error Corregido
             int indiceMinimo = i;
 
-            for (int j = i + 1; j < arreglo.length; j--) {
+            for (int j = i + 1; j < arreglo.length; j++) {// Error corregido
                 if (arreglo[j] < arreglo[indiceMinimo]) {
                     indiceMinimo = j;
                 }
