@@ -116,7 +116,8 @@ public class MetodosOrdenamiento {
     }
 
     // Método de selección con errores
-    // Error encontrado:
+    // Error encontrado: El arreglo se imprime en desorden
+    //
     public int[] seleccionTercero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -130,9 +131,9 @@ public class MetodosOrdenamiento {
                 }
             }
 
-            int smallerNumber = arreglo[i];
+            int smallerNumber = arreglo[indiceMinimo];//
             arreglo[indiceMinimo] = arreglo[i];
-            arreglo[indiceMinimo] = smallerNumber;
+            arreglo[i] = smallerNumber;//
         }
         return arreglo;
     }

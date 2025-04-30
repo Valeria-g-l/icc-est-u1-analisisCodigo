@@ -36,7 +36,7 @@ public class Benchmarking {
         long inicio=System.nanoTime();
         tarea.run();
         long fin=System.nanoTime();
-        return(fin-inicio)/1_000_000.0;
+        return(fin-inicio)/1_000_000_000.0;
 
     }
 
