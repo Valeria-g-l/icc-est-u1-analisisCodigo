@@ -10,3 +10,20 @@ class MetodosOrdenamiento:
                     #aux=arreglo[i]
                     #arreglo[i]=arreglo[j]
                     #arreglo[j]=aux
+
+    
+    def sort_seleccion(self,array):
+        arreglo =arreglo.copy()
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            int indiceMinimo = i;
+            for (int j = i + 1; j < arreglo.length; j++) {
+                if (arreglo[j] < arreglo[indiceMinimo]) {
+                    indiceMinimo = j;
+                }
+            }
+            int smallerNumber = arreglo[indiceMinimo];
+            arreglo[indiceMinimo] = arreglo[i];
+            arreglo[i] = smallerNumber;
+        }
+        return arreglo; 
+    

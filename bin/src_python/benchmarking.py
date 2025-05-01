@@ -26,7 +26,7 @@ class Benchmarking:
         inicio=time.time
         task()
         fin=time.time
-        returnfin-inicio
+        return fin-inicio
         
 
     def contar_con_nano_time(self, tarea)
@@ -34,3 +34,9 @@ class Benchmarking:
         task()
         inicio=time.time_ns
         return  fin-inicio
+
+    def medir_tiempo(self,tarea,array):
+        inicio=time.perf_counter()
+        tarea(array)
+        fin=time.perf_counter()
+        return fin-inicio
