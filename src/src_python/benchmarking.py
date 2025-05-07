@@ -7,34 +7,35 @@ class Benchmarking:
         print('Bench initialization')
 
     def ejemplo(self):
+        self.mO = MetodosOrdenamiento()
+
         self.mOrdenamiento = MetodosOrdenamiento()
         array = self.buildArreglo(5000)
 
-        tarea = lambda: self.mOrdenamiento.sortByBubble(array.copy())  
-        timeMillis = self.count_with_current_time_millis(tarea)
-        timeNanos = self.count_with_nano_time(tarea)
+        task = lambda: self.mOrdenamiento.sortByBubble(array)
+        timeMillis = self.count_with_current_time_milles(task)
+        timeNanno = self.count_with_nanno_time(task)
 
         print(f'Time Millis: {timeMillis}')
-        print(f'Time Nanos: {timeNanos}')
+        print(f'Time Nanno: {timeNanno}')
 
-    def buildArreglo(self, size):
+    def build_array(self, size):
         return [random.randint(0, 99999) for _ in range(size)]
 
-    def count_with_current_time_millis(self, tarea):  
-        inicio = time.time()
-        tarea()
-        fin = time.time()
-        return fin - inicio
+    def count_with_current_time_milles(self, task):
+        start = time.time()
+        task()
+        end = time.time()
+        return end - start
 
-    def count_with_nano_time(self, tarea): 
-        inicio = time.time_ns()
-        tarea()
-        fin = time.time_ns()
-        return fin - inicio
-
+    def count_with_nanno_time(self, task):
+        start = time.time_ns()
+        task()
+        end = time.time_ns()
+        return end - start
+    
     def medir_tiempo(self, tarea, array):
-        array_copia = array.copy() 
         inicio = time.perf_counter()
-        tarea(array_copia)
+        tarea(array)
         fin = time.perf_counter()
         return fin - inicio

@@ -1,42 +1,41 @@
 import random
-from metodos_ordenamiento import MetodosOrdenamiento
 import time
+from metodos_ordenamiento import MetodosOrdenamiento
+
 class Benchmarking:
-    def_init__(self):
-    print("Bench inicializado")
-    self.mOrdenamiento=MetodosOrdenamiento()
+    def __init__(self):
+        print('Bench initialization')
 
-    arreglo=self.build_arreglo(1000)
+    def ejemplo(self):
+        self.mO = MetodosOrdenamiento()
 
-    tarea  = lamda:self.mOrdenamiento.sortByBybble(arreglo)
-    tiempoMillis=self.contar_concurrent_time_milles(tarea)
-    tiempoNano=self.contar_con_nano_time(tarea)
+        self.mOrdenamiento = MetodosOrdenamiento()
+        array = self.buildArreglo(5000)
 
-    print(f'Tiempo:  {tiempoMillis}')
-    print(f'Tiempo : {tiempoNano}')
+        task = lambda: self.mOrdenamiento.sortByBubble(array)
+        timeMillis = self.count_with_current_time_milles(task)
+        timeNanno = self.count_with_nanno_time(task)
 
-    def buildArreglo(self, tamano):
-        array=[]
-        for i in range(tamano):
-            numero= random.randint(0,99999)
-            array.append(numero)
-        return array
+        print(f'Time Millis: {timeMillis}')
+        print(f'Time Nanno: {timeNanno}')
 
-    def contar_concurrent_time_milles(self,tarea):
-        inicio=time.time
+    def build_array(self, size):
+        return [random.randint(0, 99999) for _ in range(size)]
+
+    def count_with_current_time_milles(self, task):
+        start = time.time()
         task()
-        fin=time.time
-        return fin-inicio
-        
+        end = time.time()
+        return end - start
 
-    def contar_con_nano_time(self, tarea)
-        inicio=time.time_ns
+    def count_with_nanno_time(self, task):
+        start = time.time_ns()
         task()
-        inicio=time.time_ns
-        return  fin-inicio
-
-    def medir_tiempo(self,tarea,array):
-        inicio=time.perf_counter()
+        end = time.time_ns()
+        return end - start
+    
+    def medir_tiempo(self, tarea, array):
+        inicio = time.perf_counter()
         tarea(array)
-        fin=time.perf_counter()
-        return fin-inicio
+        fin = time.perf_counter()
+        return fin - inicio

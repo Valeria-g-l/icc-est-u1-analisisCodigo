@@ -144,7 +144,7 @@ public class MetodosOrdenamiento {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
         for (int j = 1; j < arreglo.length; j++) {
-            int key = arreglo[j];
+            int key = arreglo[j];//
             int i = j - 1;
 
             while (i > 0 && arreglo[i] < key) {
@@ -162,13 +162,13 @@ public class MetodosOrdenamiento {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
         for (int j = 1; j < arreglo.length; j++) {
-            int actual = arreglo[j];
+            int actual = arreglo[j];//
 
             int i = j - 1;
-            for (; j >= 0 && arreglo[j] > actual; j--) {
-                arreglo[j + 1] = arreglo[j];
+            for (; j >= 0 && arreglo[j] > actual; j--) {//
+                arreglo[j + 1] = arreglo[j];//
             }
-            arreglo[i + 1] = actual;
+            arreglo[i + 1] = actual;//
         }
         return arreglo;
     }
@@ -184,7 +184,7 @@ public class MetodosOrdenamiento {
 
             while (i > 0 && arreglo[i] < key) {
                 arreglo[i + 1] = arreglo[i];
-                i++;
+                i++;//
             }
             arreglo[i + 1] = key;
         }
